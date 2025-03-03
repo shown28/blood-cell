@@ -1,0 +1,71 @@
+/* Urgent require  div*/
+.urgentRequire{
+  width: fit-content;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 767px) {
+    .navLink {
+     
+      display:none;
+     
+    }
+    .mobileNavLink{
+     
+
+        animation-name: fadeIn;
+        animation-duration: .5s;
+        
+        
+    }
+    .Urgent-required{
+      font-size:x-large;
+    }
+    
+    
+  
+  }
+
+@media (min-width: 768px ) {
+    .menu {
+      display:none;
+    }
+    
+  }
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      left: -100px;
+    }
+    to {
+      opacity:1;
+      left: 0;
+    }
+  }
+
+@keyframes fadeOut {
+    from {
+      opacity: 1;
+      left: 0;
+    }
+    to {
+      opacity:0;
+      left: -100px;
+    }
+  }  
