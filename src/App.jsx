@@ -3,15 +3,17 @@ import "./App.css";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Auth from "./pages/Auth";
-import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Requests from "./pages/Requests";
 import VoluntaryDonors from "./pages/VoluntaryDonors"
+import Admin from "./pages/Admin/Admin";
+import Pnf from "./pages/pnf";
 
 function App() {
   return (
     <>
-      <Header />
+
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Auth />} />
@@ -19,6 +21,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/requests" element={<Requests />} />
         <Route path="/voluntary-donors" element={<VoluntaryDonors />} />
+        <Route path="/admin" element={<Admin/>}/>
+        <Route path="*" element={<Pnf/>}/>
       </Routes>
     <Footer/>
     </>

@@ -37,10 +37,6 @@
 
 }
 /* mission vision aim cards */
-.mva-card{
-    
-    animation: fadeIn 4s forwards;
-}
 
 .marquee {
     overflow:hidden;
@@ -100,17 +96,3 @@
     
 }
 
-
-
-
-
-@keyframes fadeIn{
-    from{
-        opacity: 0;
-    
-    }
-    to{
-        opacity: 1;
-     
-    }
-}

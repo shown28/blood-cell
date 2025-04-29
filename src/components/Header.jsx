@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import bloodDrop from "../images/bloodDrop.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
+import { button } from "@material-tailwind/react";
 
-const Header = () => {
+const Header = ({ isLogedIn }) => {
   const [isOpen, setisOpen] = useState(false);
   const user = true;
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    try{
+        sessionStorage.clear()
+        navigate("/login")
+    }
+    catch(err){
+      console.log(err.message)
+    }
+  };
 
   const show = () => {
     setisOpen(!isOpen);
@@ -38,20 +50,29 @@ const Header = () => {
                 <li className="mr-3 hover:text-red-700">
                   <Link to={"/voluntary-donors"}>Voluntary Donors</Link>
                 </li>
-                <li className="mr-3 hover:text-red-700">
-                  <Link to={"/dashboard"}>Dashboard</Link>
-                </li>
+                {isLogedIn && (
+                  <li className="mr-3 hover:text-red-700">
+                    <Link to={"/dashboard"}>Dashboard</Link>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
 
           <div className="flex items-center">
-            <button
-              type="button"
-              class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-            >
-              Login
-            </button>
+            {isLogedIn ? (
+              <button onClick={handleLogOut} class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                Log out
+              </button>
+            ) : (
+              <Link
+                to={"/login"}
+                type="button"
+                class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+              >
+                Login
+              </Link>
+            )}
 
             <button
               onClick={show}
@@ -85,9 +106,13 @@ const Header = () => {
               <li className="my-3 border-current hover:text-red-700">
                 <Link to={"/voluntary-donors"}>Voluntary Donors</Link>
               </li>
-              <li className="my-3 border-current hover:text-red-700">
+              {
+                isLogedIn &&
+                <li className="my-3 border-current hover:text-red-700">
                 <Link to={"/dashboard"}>Dashboard</Link>
               </li>
+              }
+              
             </ul>
           </div>
         )}
